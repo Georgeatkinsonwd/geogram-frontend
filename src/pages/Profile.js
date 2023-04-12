@@ -2,10 +2,13 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useGetUserID } from "../hooks/useGetUserID";
 import {useCookies} from 'react-cookie'
+import {useNavigate} from 'react-router-dom'
 import "../styles/profileStyles.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+
+
 
 
 function Profile() {
@@ -13,6 +16,8 @@ function Profile() {
   const [cookies,] = useCookies(["access_token"]);
 
   const userID = useGetUserID()
+
+  const navigate = useNavigate()
 
 
   useEffect(()=> {
@@ -28,6 +33,34 @@ function Profile() {
   }
   fetchUserPosts()
   },[userID, cookies.access_token])
+
+
+
+  const getProfileFeed = async () => {
+    try { 
+      const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
+        headers: {authorization: cookies.access_token },
+      })
+      setUserPosts(response.data)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+ 
+
+
+  const deletePost = (id) => {
+    const deleteId = id
+    try {
+      axios.delete(`http://localhost:3001/posts/deletePost/${deleteId}`).then((response)=>{
+        console.log(response)
+        getProfileFeed()
+      })
+    } catch (error) {
+      console.error(error)
+    }
+   
+  }
 
   return (
     <div>
@@ -45,7 +78,7 @@ function Profile() {
             <div className="likesAndDelete">
               <button className="likePost"><FavoriteBorderIcon fontSize="large" /></button>
               <span>{post.likes}</span>
-              <button className="delete"><DeleteForeverIcon fontSize='large' /></button>
+              <button className="delete" onClick={()=>deletePost(post._id)}><DeleteForeverIcon fontSize='large' /></button>
               </div>
               <div>
               <p className="caption">{post.caption}</p>
