@@ -2,6 +2,10 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 import { useGetUserID } from "../hooks/useGetUserID";
 import {useCookies} from 'react-cookie'
+import "../styles/profileStyles.css"
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 
 function Profile() {
@@ -27,19 +31,23 @@ function Profile() {
 
   return (
     <div>
-       <h1>Profile</h1>
-      <ul>
+       <h1 className="profileInfo">Your Profile</h1>
+       <h1 className="profileInfo">Your Posts</h1>
+      <ul className="userPosts">
         {userPosts.map((post)=>(
-          <li key={post._id}>
+          <li className="sepPost" key={post._id}>
             <div>
-              <h2>{post.title}</h2>
+              <h2 className="title">{post.title}</h2>
+            </div>
+            <div className="imgContainer">
+              <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div>
-              <img src={post.imgUrl} alt={post.title} />
-            </div>
-            <div>
-              <span>Likes:{post.likes}</span>
-              <h4>{post.caption}</h4>
+              <div className="likesContainer">
+              <button className="likePost"><FavoriteBorderIcon fontSize="large" /></button>
+              <span>{post.likes}</span>
+              </div>
+              <p className="caption">{post.caption}</p>
             </div>
           </li>
         ))}

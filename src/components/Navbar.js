@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
+import img from "../picture/logo.jpg"
+import '../styles/navbarStyles.css'
 
 
 function Navbar() {
@@ -17,12 +19,13 @@ function Navbar() {
 
   return (
     <div className="navbar">
-        <Link to="/">Home</Link>
-        {!cookies.access_token ? (<Link to="/auth">Login/Register</Link>): (
+        <img className="logo" src={img} alt="logo" />
+        <Link className="links" to="/">Home</Link>
+        {!cookies.access_token ? (<Link className="links" to="/auth">Login/Register</Link>): (
         <>
-        <Link to="/createpost">Create Post</Link>
-        <Link to="/profile">Profile</Link>
-        <button onClick={logout}>Logout</button>
+        <Link className="links" to="/createpost">Create Post</Link>
+        <Link className="links" to="/profile">Profile</Link>
+        <span className="links" onClick={logout}>Logout</span>
         </>
         )}
         
