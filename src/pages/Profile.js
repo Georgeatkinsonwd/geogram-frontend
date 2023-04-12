@@ -5,7 +5,7 @@ import {useCookies} from 'react-cookie'
 import "../styles/profileStyles.css"
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
 function Profile() {
@@ -42,12 +42,14 @@ function Profile() {
             <div className="imgContainer">
               <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>
-            <div>
-              <div className="likesContainer">
+            <div className="likesAndDelete">
               <button className="likePost"><FavoriteBorderIcon fontSize="large" /></button>
               <span>{post.likes}</span>
+              <button className="delete"><DeleteForeverIcon fontSize='large' /></button>
               </div>
+              <div>
               <p className="caption">{post.caption}</p>
+      
             </div>
           </li>
         ))}

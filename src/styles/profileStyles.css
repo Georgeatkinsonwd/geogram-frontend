@@ -58,9 +58,31 @@ text-decoration: underline;
     background: none;
     border:none;
     cursor: pointer;
+    justify-content:flex-start
 }
 
 .caption {
     font-size:18px;
 }
 
+
+
+.delete {
+    color:red;
+    background: none;
+    border:none;
+    cursor: pointer;
+    justify-content: flex-end;
+}
+
+.likesAndDelete {
+    display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.delete{
+    display:flex;
+    justify-content: flex-end;
+    margin-left:auto;
+}
