@@ -1,13 +1,3 @@
-* {
-    box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-  }
 
 .title{
 text-decoration: underline;
@@ -15,6 +5,8 @@ text-decoration: underline;
 
 
 .userPosts {
+    margin:0;
+    padding:0;
     width:100%;
     display:flex;
     flex-wrap: wrap;
@@ -30,9 +22,9 @@ text-decoration: underline;
     width:33%;
     height:25%;
     border: white solid 5px;
-    
-    
-  }
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;  
+    margin:2px;
+}
   
   .imgContainer{
     width:100%;
@@ -46,6 +38,7 @@ text-decoration: underline;
 
 .profileInfo {
     text-align: center;
+    color:black;
 }
 
 .likesContainer {
@@ -85,4 +78,13 @@ text-decoration: underline;
     display:flex;
     justify-content: flex-end;
     margin-left:auto;
+}
+
+.createPost{
+    color:black;
+    text-align: center;
+}
+
+.headerCont {
+    text-align: center;
 }

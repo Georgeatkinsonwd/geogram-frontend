@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {useGetUserID} from '../hooks/useGetUserID'
 import {useCookies} from 'react-cookie'
+import '../styles/createPostStyle.css'
 
 function CreatePost() {
   const userID = useGetUserID()
