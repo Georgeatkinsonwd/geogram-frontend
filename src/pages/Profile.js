@@ -73,14 +73,10 @@ function Profile() {
   return (
     <div className="headerCont">
        <h1 className="profileInfo">Your Profile</h1>
-       <h1 className="profileInfo">Your Posts</h1>
-       <Link className="profileInfo" to="/createpost">Create Post</Link>
+       <Link className="profileInfo" to="/createpost"><button className="profileInfo">Create Post</button></Link>
       <ul className="userPosts">
         {userPosts.map((post)=>(
           <li className="sepPost" key={post._id}>
-            <div>
-              <h2 className="title">{post.title}</h2>
-            </div>
             <div className="imgContainer">
               <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>

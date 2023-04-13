@@ -20,7 +20,7 @@ function Navbar() {
   return (
     <div className="navbar">
         <img className="logo" src={img} alt="logo" />
-        <Link className="links" to="/">Home</Link>
+        <Link className="links" to="/">Explore</Link>
         {!cookies.access_token ? (<Link className="links" to="/auth">Login/Register</Link>): (
         <>
         <Link className="links" to="/createpost">Create Post</Link>

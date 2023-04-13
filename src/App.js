@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import "./App.css";
-import Home from './pages/Home'
+import Explore from './pages/Explore'
 import Profile from './pages/Profile'
 import CreatePost from './pages/CreatePost'
 import Auth from './pages/Auth'
@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element ={<Home />} />
+          <Route path="/" element ={<Explore />} />
           <Route path="/Auth" element ={<Auth />} />
           <Route path="/createpost" element ={<CreatePost />} />
           <Route path="/profile" element ={<Profile />} />
