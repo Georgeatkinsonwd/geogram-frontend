@@ -1,7 +1,9 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import '../styles/exploreStyle.css'
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+// import FavoriteIcon from '@mui/icons-material/Favorite';
+// import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
+import Likes from '../components/Likes'
 
 function Explore() {
   const [posts, setPosts] = useState([])
@@ -31,8 +33,10 @@ function Explore() {
               <img className="exploreImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div className="exploreLikes">
-            <button className="exploreLikeBtn"><FavoriteBorderIcon fontSize="large" /></button>
+            <Likes currentLikes={post.likes} postId={post._id}/>
+            {/* <button className="exploreLikeBtn"><FavoriteIcon fontSize="large" /></button>
               <span>{post.likes}</span>
+            <button className="exploreLikeBtn"><HeartBrokenIcon fontSize="large" /></button> */}
               </div>
               <div className="exploreCaption">
               <p>{post.caption}</p>

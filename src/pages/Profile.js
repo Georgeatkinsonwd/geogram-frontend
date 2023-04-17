@@ -4,8 +4,8 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import {useCookies} from 'react-cookie'
 import {Link} from 'react-router-dom'
 import "../styles/profileStyles.css"
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
@@ -81,9 +81,10 @@ function Profile() {
               <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div className="likesAndDelete">
-              {!liked ? (<button onClick={addLike} className="likePost"><FavoriteBorderIcon fontSize="large" /></button>) : (<button onClick={addLike} className="likePost"><FavoriteIcon fontSize="large" /></button>)}
+              {!liked ? (<button onClick={addLike} className="likePost"><FavoriteIcon fontSize="large" /></button>) : (<button onClick={addLike} className="likePost"><FavoriteIcon fontSize="large" /></button>)}
               
               <span>{post.likes}</span>
+              <button className="exploreLikeBtn"><HeartBrokenIcon fontSize="large" /></button>
               <button className="delete" onClick={()=>deletePost(post._id)}><DeleteForeverIcon fontSize='large' /></button>
               </div>
               <div>
