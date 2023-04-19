@@ -4,8 +4,7 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import {useCookies} from 'react-cookie'
 import {Link} from 'react-router-dom'
 import "../styles/profileStyles.css"
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
+import Likes from '../components/Likes'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 
@@ -14,7 +13,6 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 function Profile() {
   const [userPosts, setUserPosts] = useState([]) 
   const [cookies,] = useCookies(["access_token"]);
-  const [liked, setIsLiked] = useState(false)
 
   const userID = useGetUserID()
 
@@ -62,13 +60,6 @@ function Profile() {
   }
 
 
-  const addLike =  () => {
-    try {
-      setIsLiked(true)
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   return (
     <div className="headerCont">
@@ -81,10 +72,8 @@ function Profile() {
               <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div className="likesAndDelete">
-              {!liked ? (<button onClick={addLike} className="likePost"><FavoriteIcon fontSize="large" /></button>) : (<button onClick={addLike} className="likePost"><FavoriteIcon fontSize="large" /></button>)}
-              
-              <span>{post.likes}</span>
-              <button className="exploreLikeBtn"><HeartBrokenIcon fontSize="large" /></button>
+              <Likes  currentLikes={post.likes} postId={post._id}/>
+                 
               <button className="delete" onClick={()=>deletePost(post._id)}><DeleteForeverIcon fontSize='large' /></button>
               </div>
               <div>

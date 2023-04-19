@@ -34,9 +34,7 @@ function Explore() {
             </div>
             <div className="exploreLikes">
             <Likes currentLikes={post.likes} postId={post._id}/>
-            {/* <button className="exploreLikeBtn"><FavoriteIcon fontSize="large" /></button>
-              <span>{post.likes}</span>
-            <button className="exploreLikeBtn"><HeartBrokenIcon fontSize="large" /></button> */}
+        
               </div>
               <div className="exploreCaption">
               <p>{post.caption}</p>
