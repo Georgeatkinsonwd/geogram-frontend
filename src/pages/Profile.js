@@ -36,7 +36,7 @@ function Profile() {
   const getProfileFeed = async () => {
     try { 
       const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
-        headers: {authorization: cookies.access_token },
+        headers: {authorization: cookies.access_token},
       })
       setUserPosts(response.data)
     } catch (error) {
@@ -49,7 +49,9 @@ function Profile() {
   const deletePost = (id) => {
     const deleteId = id
     try {
-      axios.delete(`http://localhost:3001/posts/deletePost/${deleteId}`).then((response)=>{
+      axios.delete(`http://localhost:3001/posts/deletePost/${deleteId}`,{
+        headers: {authorization: cookies.access_token },
+      }).then((response)=>{
         console.log(response)
         getProfileFeed()
       })
