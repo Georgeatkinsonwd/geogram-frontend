@@ -74,7 +74,7 @@ function Profile() {
               <img className="postImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div className="likesAndDelete">
-              <Likes  currentLikes={post.likes} postId={post._id}/>
+              <Likes  currentLikes={post.likedBy} postId={post._id}/>
                  
               <button className="delete" onClick={()=>deletePost(post._id)}><DeleteForeverIcon fontSize='large' /></button>
               </div>

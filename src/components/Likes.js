@@ -3,6 +3,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import axios from 'axios'
 import {useCookies} from 'react-cookie'
+import {useGetUserID} from '../hooks/useGetUserID'
 
 
 
@@ -10,21 +11,26 @@ import {useCookies} from 'react-cookie'
 
 
 function Likes({currentLikes, postId}) {
-    const [likes,setLikes] = useState(currentLikes)
-    const [isLiked, setIsLiked] = useState(false)
+    const userID = useGetUserID()
+    const [isLiked, setIsLiked] = useState(currentLikes.includes(userID))
     const [cookies,] = useCookies(["access_token"]);
+    const [likedByUser, setIsLikedByUser] = useState(currentLikes.length)
+   
 
 
-    const increaseLike = async () => {
+    const likePost = async () => {
         const id = postId
+        const likedBy = userID
         try {
-            await axios.put(`http://localhost:3001/posts/increaseLike/${id}`,{
-                likes: likes + 1},
-                {headers: {authorization: cookies.access_token }}
+            await axios.put(`http://localhost:3001/posts/likePost/${id}`,{
+                likedBy},
+                {
+                    headers: {authorization: cookies.access_token }}
             ).then((response)=>{
-            console.log(response)
-            setLikes(response.data.likes)
+            console.log(response.data.likedBy)
+            setIsLikedByUser(response.data.likedBy.length)
             setIsLiked(true)
+            
         })
         } catch (error) {
             alert('Must be logged in to like posts')
@@ -32,28 +38,32 @@ function Likes({currentLikes, postId}) {
         }
     }
 
-    const decreaseLike = async () => {
+ 
+
+    const removeLike = async () => {
         const id = postId
-        if(likes>0){
+        const likedBy = userID
         try {
-            await axios.put(`http://localhost:3001/posts/increaseLike/${id}`,{
-                likes: likes - 1},
+            await axios.put(`http://localhost:3001/posts/removeLike/${id}`,{
+                likedBy},
                 {
-                headers: {authorization: cookies.access_token }}
-              ).then((response)=>{
-            console.log(response)
-            setLikes(response.data.likes)
+                    headers: {authorization: cookies.access_token }}
+            ).then((response)=>{
+            console.log(response.data.likedBy)
+            setIsLikedByUser(response.data.likedBy.length)
             setIsLiked(false)
+            
         })
         } catch (error) {
+            alert('Must be logged in to like posts')
             console.log(error)
         }
     }
-    }
+
   return (
     <div>
-        {isLiked ? (<button className="exploreLikeBtn" onClick={decreaseLike}><FavoriteIcon fontSize="large" /></button>)  : (<button className="exploreLikeBtn" onClick={increaseLike}><FavoriteBorderIcon fontSize="large" /></button>)  }
-        <span>{likes}</span>
+        {isLiked ? (<button className="exploreLikeBtn" onClick={removeLike}><FavoriteIcon fontSize="large" /></button>)  : (<button className="exploreLikeBtn" onClick={likePost}><FavoriteBorderIcon fontSize="large" /></button>)  }
+        <span>{likedByUser}</span>
     </div>
   )
 }

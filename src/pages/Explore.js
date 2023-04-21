@@ -1,8 +1,6 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
 import '../styles/exploreStyle.css'
-// import FavoriteIcon from '@mui/icons-material/Favorite';
-// import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import Likes from '../components/Likes'
 
 function Explore() {
@@ -33,7 +31,7 @@ function Explore() {
               <img className="exploreImg" src={post.imgUrl} alt={post.title} />
             </div>
             <div className="exploreLikes">
-            <Likes currentLikes={post.likes} postId={post._id}/>
+            <Likes currentLikes={post.likedBy} postId={post._id}/>
         
               </div>
               <div className="exploreCaption">
