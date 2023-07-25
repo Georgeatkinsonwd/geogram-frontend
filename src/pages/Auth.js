@@ -33,7 +33,7 @@ const Login = () => {
 
       setCookies("access_token", response.data.token)
       window.localStorage.setItem("userID", response.data.userID)
-      navigate("/")
+      navigate("/profile")
 
     } catch (error) {
       console.error(error)
@@ -106,8 +106,7 @@ const Form = ({username, setUsername, password, setPassword, label, onSubmit}) =
           <label htmlFor="password"> Password: </label>
           <input value={password} type="password" id="password" onChange={(e) => setPassword(e.target.value)} />
         </div>
-
-
+  
 
         <button type="submit">{label}</button>
       </form>

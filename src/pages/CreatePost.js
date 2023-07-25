@@ -10,11 +10,9 @@ function CreatePost() {
   const [cookies,] = useCookies(["access_token"]);
 
   const [post, setPost] = useState({
-    title: "",
     imgUrl: "",
     caption: "",
     user: userID,
-    likes: 0,
   })
 
  const navigate = useNavigate()
@@ -24,10 +22,10 @@ function CreatePost() {
     setPost({...post, [name]: value})
   }
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault()
     try {
-      axios.post("http://localhost:3001/posts",post,{
+      await axios.post("http://localhost:3001/posts",post,{
         headers: {authorization: cookies.access_token},
       })
       alert('Post created')
@@ -40,12 +38,11 @@ function CreatePost() {
 
 
   return (
-    <div className="create-recipe">
+    <div className="createContainer">
+    <div className="create-post">
       <h2>CreatePost</h2>
       <form onSubmit={onSubmit}>
-        <label htmlFor="title">Name</label>
-        <input type="text" id="title" name="title" onChange={handleChange} />
-
+    
         <label htmlFor="imgUrl">Image Url</label>
         <input type="text" id="imgUrl" name="imgUrl" onChange={handleChange} />
 
@@ -56,6 +53,7 @@ function CreatePost() {
         <button type="submit">Submit</button>
       </form>
       
+    </div>
     </div>
   )
 }

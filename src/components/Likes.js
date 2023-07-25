@@ -27,7 +27,6 @@ function Likes({currentLikes, postId}) {
                 {
                     headers: {authorization: cookies.access_token }}
             ).then((response)=>{
-            console.log(response.data.likedBy)
             setIsLikedByUser(response.data.likedBy.length)
             setIsLiked(true)
             

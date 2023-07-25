@@ -1,3 +1,10 @@
+
+.createContainer{
+  display:flex;
+  justify-content: center;
+  height:100%;
+}
+
 .auth {
     display: flex;
     justify-content: center;
@@ -37,7 +44,7 @@
   }
   
   
-  .create-recipe {
+  .create-post {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,9 +54,10 @@
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin: 20px;
-    width: 400px;
+    width: 500px;
+    height:425px;
   }
-  .create-recipe form {
+  .create-post form {
     display: flex;
     flex-direction: column;
   }

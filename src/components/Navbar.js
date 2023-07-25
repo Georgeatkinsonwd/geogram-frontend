@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
 import {useNavigate} from 'react-router-dom'
-import img from "../picture/logo.jpg"
+import img from "../picture/parrot.png"
 import '../styles/navbarStyles.css'
 
 
@@ -19,7 +19,7 @@ function Navbar() {
 
   return (
     <div className="navbar">
-        <img className="logo" src={img} alt="logo" />
+        <a className="links" href="/" ><img className="logo" src={img} alt="logo" /></a>
         <Link className="links" to="/">Explore</Link>
         {!cookies.access_token ? (<Link className="links" to="/auth">Login/Register</Link>): (
         <>
