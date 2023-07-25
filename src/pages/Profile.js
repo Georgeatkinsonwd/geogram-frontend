@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import "../styles/profileStyles.css"
 import Likes from '../components/Likes'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -15,9 +16,12 @@ function Profile() {
   const [cookies,] = useCookies(["access_token"]);
 
   const userID = useGetUserID()
-
+  const navigate = useNavigate()
 
   useEffect(()=> {
+    if(!userID){
+      navigate('/auth')
+    }
     const fetchUserPosts =async () => {
     try { 
       const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
@@ -29,7 +33,7 @@ function Profile() {
     }
   }
   fetchUserPosts()
-  },[userID, cookies.access_token])
+  },[userID, cookies.access_token, navigate])
 
 
 
