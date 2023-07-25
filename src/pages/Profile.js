@@ -14,9 +14,11 @@ import {useNavigate} from 'react-router-dom'
 function Profile() {
   const [userPosts, setUserPosts] = useState([]) 
   const [cookies,] = useCookies(["access_token"]);
+  const [username, setUsername] = useState("")
 
   const userID = useGetUserID()
   const navigate = useNavigate()
+
 
   useEffect(()=> {
     if(!userID){
@@ -27,6 +29,8 @@ function Profile() {
       const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
         headers: {authorization: cookies.access_token },
       })
+      const getUsername = await axios.get(`http://localhost:3001/auth/getUsername/${userID}`)
+      setUsername(getUsername.data)
       setUserPosts(response.data)
     } catch (error) {
       console.error(error)
@@ -69,7 +73,7 @@ function Profile() {
 
   return (
     <div className="headerCont">
-       <h1 className="profileInfo">Your Profile</h1>
+       <h1 className="profileInfo">{username}'s Profile</h1>
        <Link className="profileInfo" to="/createpost"><button className="profileInfo">Create Post</button></Link>
       <ul className="userPosts">
         {userPosts.map((post)=>(

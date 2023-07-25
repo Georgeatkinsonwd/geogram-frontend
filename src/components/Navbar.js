@@ -19,7 +19,10 @@ function Navbar() {
 
   return (
     <div className="navbar">
+      <div className="brand">
         <a className="links" href="/" ><img className="logo" src={img} alt="logo" /></a>
+        <h3 className="brandName">Geogram</h3>
+        </div>
         <Link className="links" to="/">Explore</Link>
         {!cookies.access_token ? (<Link className="links" to="/auth">Login/Register</Link>): (
         <>

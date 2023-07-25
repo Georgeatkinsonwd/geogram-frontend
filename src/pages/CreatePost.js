@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 import {useGetUserID} from '../hooks/useGetUserID'
@@ -13,7 +13,20 @@ function CreatePost() {
     imgUrl: "",
     caption: "",
     user: userID,
+    username: "",
   })
+
+  useEffect(()=> {
+    const getUsername = async () => {
+    try { 
+      const getUsername = await axios.get(`http://localhost:3001/auth/getUsername/${userID}`)
+      setPost(post => ({...post, username: getUsername.data}))
+    } catch (error) {
+      console.error(error)
+    }
+  }
+  getUsername()
+},[userID,post])
 
  const navigate = useNavigate()
 
@@ -25,6 +38,7 @@ function CreatePost() {
   const onSubmit = async (event) => {
     event.preventDefault()
     try {
+      console.log(post)
       await axios.post("http://localhost:3001/posts",post,{
         headers: {authorization: cookies.access_token},
       })

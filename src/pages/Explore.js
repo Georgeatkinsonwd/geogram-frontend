@@ -27,6 +27,9 @@ function Explore() {
       <ul className="explorePage">
         {posts.sort(() => .5 - Math.random()).map((post)=>(
           <li className="individualPost" key={post._id}>
+            <div className="postAuthor">
+                <h3>{post.username}</h3>
+            </div>
             <div className="exploreImgContainer">
               <img className="exploreImg" src={post.imgUrl} alt={post.title} />
             </div>
