@@ -30,13 +30,20 @@ const Login = () => {
         password
       })
       console.log(response)
-
-      setCookies("access_token", response.data.token)
+      if (response.data.token){
+        setCookies("access_token", response.data.token)
       window.localStorage.setItem("userID", response.data.userID)
       navigate("/profile")
+      }
+
+      if(!response.data.token){
+        alert('invalid login details')
+      }
+      
 
     } catch (error) {
       console.error(error)
+      navigate("/auth")
     }
     }
 
@@ -59,6 +66,7 @@ const Register = () => {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
+ 
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
@@ -66,10 +74,11 @@ const Register = () => {
         username,
         password
       })
-      alert("Registration Completed")
+      alert("Registration Completed, please log in")
       setUsername("")
       setPassword("")
-      
+    
+          
       
     } catch (error) {
       console.error(error)
