@@ -14,6 +14,9 @@ function Auth() {
     if(userID){
       navigate('/profile')
     }
+    else{
+      navigate('/auth')
+    }
     
   },[userID,navigate])
 
@@ -84,17 +87,18 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.post("http://localhost:3001/auth/register", {
+      const response = await axios.post("http://localhost:3001/auth/register", {
         username,
         password
       })
-      alert("Registration Completed, please log in")
+      alert(response.data.message)
       setUsername("")
       setPassword("")
     
           
       
     } catch (error) {
+      alert('Error, please try again')
       console.error(error)
     }
 

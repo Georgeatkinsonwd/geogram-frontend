@@ -24,7 +24,7 @@ function Navbar() {
         <h3 className="brandName">Geogram</h3>
         </div>
         <Link className="links" to="/">Explore</Link>
-        {!cookies.access_token ? (<Link className="links" to="/auth">Login/Register</Link>): (
+        {!cookies.access_token ? (<Link className="links" to="/auth" onClick={logout}>Login/Register</Link>): (
         <>
         <Link className="links" to="/createpost">Create Post</Link>
         <Link className="links" to="/profile">Profile</Link>
