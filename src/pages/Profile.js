@@ -26,10 +26,10 @@ function Profile() {
     }
     const fetchUserPosts =async () => {
     try { 
-      const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
+      const response = await axios.get(`https://pear-faithful-chipmunk.cyclic.app/posts/userPosts/${userID}`,{
         headers: {authorization: cookies.access_token },
       })
-      const getUsername = await axios.get(`http://localhost:3001/auth/getUsername/${userID}`)
+      const getUsername = await axios.get(`https://pear-faithful-chipmunk.cyclic.app/auth/getUsername/${userID}`)
       setUsername(getUsername.data)
       setUserPosts(response.data)
     } catch (error) {
@@ -43,7 +43,7 @@ function Profile() {
 
   const getProfileFeed = async () => {
     try { 
-      const response = await axios.get(`http://localhost:3001/posts/userPosts/${userID}`,{
+      const response = await axios.get(`https://pear-faithful-chipmunk.cyclic.app/posts/userPosts/${userID}`,{
         headers: {authorization: cookies.access_token},
       })
       setUserPosts(response.data)
@@ -57,7 +57,7 @@ function Profile() {
   const deletePost = (id) => {
     const deleteId = id
     try {
-      axios.delete(`http://localhost:3001/posts/deletePost/${deleteId}`,{
+      axios.delete(`https://pear-faithful-chipmunk.cyclic.app/posts/deletePost/${deleteId}`,{
         headers: {authorization: cookies.access_token },
       }).then((response)=>{
         console.log(response)

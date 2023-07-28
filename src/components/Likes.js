@@ -22,7 +22,7 @@ function Likes({currentLikes, postId}) {
         const id = postId
         const likedBy = userID
         try {
-            await axios.put(`http://localhost:3001/posts/likePost/${id}`,{
+            await axios.put(`https://pear-faithful-chipmunk.cyclic.app/posts/likePost/${id}`,{
                 likedBy},
                 {
                     headers: {authorization: cookies.access_token }}
@@ -43,12 +43,11 @@ function Likes({currentLikes, postId}) {
         const id = postId
         const likedBy = userID
         try {
-            await axios.put(`http://localhost:3001/posts/removeLike/${id}`,{
+            await axios.put(`https://pear-faithful-chipmunk.cyclic.app/posts/removeLike/${id}`,{
                 likedBy},
                 {
                     headers: {authorization: cookies.access_token }}
             ).then((response)=>{
-            console.log(response.data.likedBy)
             setIsLikedByUser(response.data.likedBy.length)
             setIsLiked(false)
             

@@ -19,7 +19,7 @@ function CreatePost() {
   useEffect(()=> {
     const getUsername = async () => {
     try { 
-      const getUsername = await axios.get(`http://localhost:3001/auth/getUsername/${userID}`)
+      const getUsername = await axios.get(`https://pear-faithful-chipmunk.cyclic.app//auth/getUsername/${userID}`)
       setPost(post => ({...post, username: getUsername.data}))
     } catch (error) {
       console.error(error)
@@ -38,8 +38,7 @@ function CreatePost() {
   const onSubmit = async (event) => {
     event.preventDefault()
     try {
-      console.log(post)
-      await axios.post("http://localhost:3001/posts",post,{
+      await axios.post("https://pear-faithful-chipmunk.cyclic.app/posts",post,{
         headers: {authorization: cookies.access_token},
       })
       alert('Post created')

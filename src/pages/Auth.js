@@ -42,11 +42,10 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:3001/auth/login",{
+      const response = await axios.post("https://pear-faithful-chipmunk.cyclic.app/auth/login",{
         username,
         password
       })
-      console.log(response)
       if (response.data.token){
         setCookies("access_token", response.data.token)
       window.localStorage.setItem("userID", response.data.userID)
@@ -87,7 +86,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("http://localhost:3001/auth/register", {
+      const response = await axios.post("https://pear-faithful-chipmunk.cyclic.app/auth/register", {
         username,
         password
       })
