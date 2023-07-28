@@ -88,7 +88,9 @@ img {
 
 @media screen and (max-width: 900px) {
   .auth {
-    display:block;
+    flex-direction: column;
+    height:100%;
+    align-items: center;
   }
 
   .auth-container{
