@@ -86,3 +86,12 @@ img {
 
 
 
+@media screen and (max-width: 900px) {
+  .auth {
+    display:block;
+  }
+
+  .auth-container{
+    width:100%;
+  }
+}
