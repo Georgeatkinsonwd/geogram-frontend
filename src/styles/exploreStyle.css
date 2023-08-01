@@ -93,8 +93,7 @@
 
   @media screen and (max-width: 900px) {
     .individualPost{
-      width:100%;
-      height:80%;
+      width:80%;
     }
 
     .exploreImgContainer{
