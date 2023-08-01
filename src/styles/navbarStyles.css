@@ -54,6 +54,14 @@
 
   @media screen and (max-width: 900px) {
    .links{
-    font-size:18px;
+    font-size:16px;
+   }
+
+   a{
+    margin: 5px;
+   }
+
+   .logo{
+    height:75px;
    }
   }
