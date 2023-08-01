@@ -22,7 +22,7 @@ function Explore() {
   },[])
 
   return (
-    <div>
+    <div className="exploreAll">
       <h1 className="exploreTitle">Explore other user's posts</h1>
       <ul className="explorePage">
         {posts.sort(() => .5 - Math.random()).map((post)=>(
