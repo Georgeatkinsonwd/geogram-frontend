@@ -1,3 +1,5 @@
-Social Media app built with React
+Social Media app built with React/Node
 
-backend can be found here https://github.com/Georgeatkinsonwd/geogram-backend
+Website can be found live here https://geogramx.netlify.app/
+
+Backend code can be found here https://github.com/Georgeatkinsonwd/geogram-backend
