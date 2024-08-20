@@ -10,7 +10,7 @@ function Explore() {
 
     const fetchPosts = async () => {
       try { 
-        const response = await axios.get("https://pear-faithful-chipmunk.cyclic.app/posts")
+        const response = await axios.get("https://geogram-backend.onrender.com/")
         setPosts(response.data)
       } catch (error) {
         console.error(error)

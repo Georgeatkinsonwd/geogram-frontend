@@ -19,7 +19,7 @@ function CreatePost() {
   useEffect(()=> {
     const getUsername = async () => {
     try { 
-      const getUsername = await axios.get(`https://pear-faithful-chipmunk.cyclic.app//auth/getUsername/${userID}`)
+      const getUsername = await axios.get(`https://geogram-backend.onrender.com/auth/getUsername/${userID}`)
       setPost(post => ({...post, username: getUsername.data}))
     } catch (error) {
       console.error(error)
@@ -38,7 +38,7 @@ function CreatePost() {
   const onSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post("https://pear-faithful-chipmunk.cyclic.app/posts",post,{
+      await axios.post("https://geogram-backend.onrender.com/posts",post,{
         headers: {authorization: cookies.access_token},
       })
       alert('Post created')

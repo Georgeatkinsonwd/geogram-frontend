@@ -42,7 +42,7 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("https://pear-faithful-chipmunk.cyclic.app/auth/login",{
+      const response = await axios.post("https://geogram-backend.onrender.com/auth/login",{
         username,
         password
       })
@@ -86,7 +86,7 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post("https://pear-faithful-chipmunk.cyclic.app/auth/register", {
+      const response = await axios.post("https://geogram-backend.onrender.com/auth/register", {
         username,
         password
       })

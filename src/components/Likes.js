@@ -22,7 +22,7 @@ function Likes({currentLikes, postId}) {
         const id = postId
         const likedBy = userID
         try {
-            await axios.put(`https://pear-faithful-chipmunk.cyclic.app/posts/likePost/${id}`,{
+            await axios.put(`https://geogram-backend.onrender.com/posts/likePost/${id}`,{
                 likedBy},
                 {
                     headers: {authorization: cookies.access_token }}
@@ -43,7 +43,7 @@ function Likes({currentLikes, postId}) {
         const id = postId
         const likedBy = userID
         try {
-            await axios.put(`https://pear-faithful-chipmunk.cyclic.app/posts/removeLike/${id}`,{
+            await axios.put(`https://geogram-backend.onrender.com/posts/removeLike/${id}`,{
                 likedBy},
                 {
                     headers: {authorization: cookies.access_token }}
