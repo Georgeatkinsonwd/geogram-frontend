@@ -10,8 +10,10 @@ function Explore() {
 
     const fetchPosts = async () => {
       try { 
-        const response = await axios.get("https://geogram-backend.onrender.com/")
+        const response = await axios.get("https://geogram-backend.onrender.com/posts")
+        
         setPosts(response.data)
+
       } catch (error) {
         console.error(error)
       }
